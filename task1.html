@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Task 1 · Battle — Quest Hub</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/task1.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="logo" href="index.html">⚔ Quest Hub</a>
+      <nav class="nav" aria-label="Main">
+        <a href="task1.html" class="is-current" aria-current="page">Battle</a>
+        <a href="task2.html">Quest board</a>
+        <a href="task3.html">Character creator</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <h1>Turn-based battle</h1>
+    <p class="page__intro">Defeat the Goblin King. Each turn you attack, defend or heal, then the enemy strikes back. Keyboard: <span class="kbd">A</span> attack, <span class="kbd">D</span> defend, <span class="kbd">H</span> heal, <span class="kbd">R</span> restart.</p>
+
+    <section class="arena" aria-label="Fighters">
+      <article class="panel fighter" id="hero">
+        <h2 class="fighter__name">Hero <span class="fighter__hp" id="hero-hp-text"></span></h2>
+        <progress id="hero-hp" max="100" value="100" aria-label="Hero health"></progress>
+        <p class="fighter__status" id="hero-status"></p>
+      </article>
+
+      <article class="panel fighter" id="enemy">
+        <h2 class="fighter__name">Goblin King <span class="fighter__hp" id="enemy-hp-text"></span></h2>
+        <progress id="enemy-hp" max="100" value="100" aria-label="Enemy health"></progress>
+        <p class="fighter__status" id="enemy-status"></p>
+      </article>
+    </section>
+
+    <div id="result" class="result hidden" role="status"></div>
+
+    <section class="panel" aria-label="Controls">
+      <div class="actions" id="actions">
+        <button type="button" class="btn btn--primary" data-action="attack">Attack</button>
+        <button type="button" class="btn" data-action="defend">Defend</button>
+        <button type="button" class="btn" data-action="heal" id="heal-btn">Heal</button>
+        <button type="button" class="btn btn--danger" id="restart-btn">Restart</button>
+      </div>
+
+      <p class="msg" id="message" aria-live="polite"></p>
+
+      <div class="stats">
+        <span>Turn: <strong id="turn"></strong></span>
+        <span>Wins: <strong id="wins"></strong></span>
+        <span>Losses: <strong id="losses"></strong></span>
+      </div>
+
+      <h2>Combat log <span class="field__hint">(last 5 actions)</span></h2>
+      <ol class="log" id="log" aria-live="polite"></ol>
+    </section>
+  </main>
+
+  <footer class="site-footer">Assignment 5 · Task 1 · Serikbay Daniyar, IT-2509</footer>
+</body>
+</html>

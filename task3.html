@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Task 3 · Character creator — Quest Hub</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/task3.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="logo" href="index.html">⚔ Quest Hub</a>
+      <nav class="nav" aria-label="Main">
+        <a href="task1.html">Battle</a>
+        <a href="task2.html">Quest board</a>
+        <a href="task3.html" class="is-current" aria-current="page">Character creator</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <h1>Character creator</h1>
+    <p class="page__intro">Create a hero for the guild. Spend exactly 20 skill points; the main skill of your class needs at least 5 points and must be your highest skill.</p>
+
+    <div class="creator">
+      <form id="hero-form" class="panel">
+        <div id="error-summary" class="error-summary hidden" tabindex="-1" role="alert" aria-labelledby="error-summary-title">
+          <h2 id="error-summary-title"></h2>
+          <ul id="error-list"></ul>
+        </div>
+
+        <div class="form-grid">
+          <div class="field">
+            <label for="name">Hero name</label>
+            <input type="text" id="name" name="name" required minlength="3" maxlength="16"
+                   pattern="[A-Za-z][A-Za-z' \-]*" autocomplete="off"
+                   aria-describedby="name-hint name-error">
+            <p class="field__hint" id="name-hint">3–16 English letters; spaces, ' and - are allowed.</p>
+            <p class="field__error" id="name-error"></p>
+          </div>
+
+          <div class="field">
+            <label for="hero-class">Class</label>
+            <select id="hero-class" name="heroClass" required aria-describedby="class-hint class-error">
+              <option value="">— choose a class —</option>
+              <option value="warrior">Warrior (main skill: Strength)</option>
+              <option value="mage">Mage (main skill: Magic)</option>
+              <option value="rogue">Rogue (main skill: Agility)</option>
+              <option value="paladin">Paladin (main skill: Endurance)</option>
+            </select>
+            <p class="field__hint" id="class-hint">The main skill needs 5 or more points and must be the highest.</p>
+            <p class="field__error" id="class-error"></p>
+          </div>
+
+          <fieldset id="color-group">
+            <legend>Banner color</legend>
+            <div class="swatches">
+              <label class="swatch swatch--crimson">
+                <input type="radio" id="color-crimson" name="color" value="crimson" required aria-describedby="color-error">
+                <span class="swatch__dot"></span> Crimson
+              </label>
+              <label class="swatch swatch--emerald">
+                <input type="radio" id="color-emerald" name="color" value="emerald" aria-describedby="color-error">
+                <span class="swatch__dot"></span> Emerald
+              </label>
+              <label class="swatch swatch--azure">
+                <input type="radio" id="color-azure" name="color" value="azure" aria-describedby="color-error">
+                <span class="swatch__dot"></span> Azure
+              </label>
+              <label class="swatch swatch--shadow">
+                <input type="radio" id="color-shadow" name="color" value="shadow" aria-describedby="color-error">
+                <span class="swatch__dot"></span> Shadow
+              </label>
+            </div>
+            <p class="field__error" id="color-error"></p>
+          </fieldset>
+
+          <fieldset id="skills-group">
+            <legend>Skills (1–10 each)</legend>
+            <p class="points points--left" id="points" aria-live="polite"></p>
+            <div class="skills">
+              <div class="field">
+                <label for="strength">Strength</label>
+                <input type="number" id="strength" name="strength" required min="1" max="10" step="1"
+                       inputmode="numeric" aria-describedby="strength-error skills-error">
+                <p class="field__error" id="strength-error"></p>
+              </div>
+              <div class="field">
+                <label for="magic">Magic</label>
+                <input type="number" id="magic" name="magic" required min="1" max="10" step="1"
+                       inputmode="numeric" aria-describedby="magic-error skills-error">
+                <p class="field__error" id="magic-error"></p>
+              </div>
+              <div class="field">
+                <label for="agility">Agility</label>
+                <input type="number" id="agility" name="agility" required min="1" max="10" step="1"
+                       inputmode="numeric" aria-describedby="agility-error skills-error">
+                <p class="field__error" id="agility-error"></p>
+              </div>
+              <div class="field">
+                <label for="endurance">Endurance</label>
+                <input type="number" id="endurance" name="endurance" required min="1" max="10" step="1"
+                       inputmode="numeric" aria-describedby="endurance-error skills-error">
+                <p class="field__error" id="endurance-error"></p>
+              </div>
+            </div>
+            <p class="field__error" id="skills-error"></p>
+          </fieldset>
+
+          <div class="field">
+            <label for="motto">Motto <span class="field__hint">(optional)</span></label>
+            <input type="text" id="motto" name="motto" maxlength="60" autocomplete="off">
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn--primary">Create hero</button>
+            <button type="reset" class="btn">Clear form</button>
+          </div>
+        </div>
+      </form>
+
+      <aside aria-labelledby="preview-title">
+        <h2 id="preview-title">Live preview</h2>
+        <div id="preview"></div>
+        <div id="success" class="msg msg--success success-banner hidden" role="status"></div>
+        <h2 class="hidden" id="roster-title">Your guild</h2>
+        <div class="roster" id="roster"></div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">Assignment 5 · Task 3 · Serikbay Daniyar, IT-2509</footer>
+</body>
+</html>
